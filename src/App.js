@@ -1,21 +1,29 @@
 import React from 'react';
 import { Container } from 'react-bootstrap'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Navbar from './components/NavBar'
-import TodoApp from './components/TodoApp';
-import ButtonSuccess from './components/TodoApp/ButtonSuccess';
-
+import TodoApp from './components/TodoApp/ButtonSuccess';
+import Home from './components/Home'
+import DataWonderlink from './components/DataWonderlink'
 function App() {
   return (
-    <div>
-      <Navbar/>
-      <Container> 
-      <div>Saya mau belajar reactjs</div>
-      <TodoApp/>
-      <ButtonSuccess name="tombolSetuju">Yes, i want to learn reactjs</ButtonSuccess>
-      </Container>
-    </div>
     
-    
+      <Router>
+        <Navbar/>
+        <Container>
+          <Switch>
+            <Route path="/todoapp">
+              <TodoApp/>
+            </Route>
+            <Route path="/data_wonderlink">
+              <DataWonderlink/>
+            </Route>
+            <Route path="/" exact>
+              <Home/>
+            </Route>
+          </Switch>
+        </Container>
+      </Router>
   );
 }
 
